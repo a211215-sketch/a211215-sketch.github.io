@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NUR SYAHIRA BINTI AZMAN - Student e-Portfolio</title>
+    <style>
+        :root {
+            --primary: #ffd1dc; /* Soft pastel pink */
+            --primary-dark: #ffafc1;
+            --primary-light: #fff5f7;
+            --secondary: #e07a93; /* Subtle rose */
+            --dark: #4a3b3e;
+            --light: #fffbfc;
+            --white: #ffffff;
+            --shadow: 0 8px 24px rgba(224, 122, 147, 0.06);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: var(--dark);
+            background-color: var(--light);
+        }
+
+        header {
+            background: linear-gradient(135deg, #fff0f2 0%, #ffd1dc 100%);
+            color: var(--dark);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 175, 193, 0.2);
+        }
+
+        .header-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+
+        .meta-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1.25rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .meta-item span {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: var(--secondary);
+            font-weight: 700;
+            margin-bottom: 0.15rem;
+        }
+
+        .meta-item p {
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        nav {
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 2px 15px rgba(224, 122, 147, 0.04);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 209, 220, 0.4);
+        }
+
+        .nav-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-container a {
+            color: var(--dark);
+            text-decoration: none;
+            padding: 0.9rem 1.2rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .nav-container a:hover {
+            color: var(--secondary);
+            background-color: var(--primary-light);
+        }
+
+        section {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem 1rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 2rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 3px;
+            background-color: var(--primary-dark);
+            margin: 0.5rem auto 0;
+            border-radius: 4px;
+        }
+
+        .intro-box {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 209, 220, 0.3);
+            text-align: center;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+        }
+
+        .sdg-badge {
+            display: inline-block;
+            background-color: #4caf50;
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 10px rgba(76,175,80,0.15);
+        }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .card {
+            background-color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(255, 209, 220, 0.2);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(224, 122, 147, 0.1);
+        }
+
+        /* Rekabentuk Thumbnail Video Gantikan Iframe */
+        .video-link-container {
+            position: relative;
+            display: block;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #f0e2e5;
+            overflow: hidden;
+            text-decoration: none;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(rgba(224, 122, 147, 0.1), rgba(224, 122, 147, 0.2));
+            transition: var(--transition);
+        }
+
+        .video-link-container:hover .video-placeholder {
+            background: linear-gradient(rgba(224, 122, 147, 0.2), rgba(224, 122, 147, 0.3));
+        }
+
+        .play-button {
+            width: 55px;
+            height: 55px;
+            background-color: #ff0000;
+            border-radius: 50px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
+            margin-bottom: 0.5rem;
+            transition: var(--transition);
+        }
+
+        .play-button::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 9px 0 9px 16px;
+            border-color: transparent transparent transparent #ffffff;
+            margin-left: 4px;
+        }
+
+        .video-link-container:hover .play-button {
+            transform: scale(1.1);
+            background-color: #cc0000;
+        }
+
+        .play-text {
+            color: var(--dark);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 0.2rem 0.6rem;
+            border-radius: 6px;
+        }
+
+        .card-content {
+            padding: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-title {
+            font-size: 1.25rem;
+            color: var(--dark);
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #6e5d60;
+            margin-bottom: 1rem;
+            flex-grow: 1;
+        }
+
+        .card-reflection {
+            background-color: var(--primary-light);
+            padding: 1rem;
+            border-left: 3px solid var(--primary-dark);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: var(--dark);
+            margin-bottom: 1rem;
+        }
+
+        .card-meta {
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #6e5d60;
+            background: var(--light);
+            padding: 0.75rem;
+            border-radius: 10px;
+        }
+
+        .card-meta strong {
+            color: var(--secondary);
+        }
+
+        .btn-github {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--secondary);
+            color: var(--white);
+            text-decoration: none;
+            padding: 0.75rem 1.25rem;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            margin-top: auto;
+            text-align: center;
+        }
+
+        .btn-github:hover {
+            background-color: #d1647e;
+            transform: translateY(-1px);
+        }
+
+        .journey-box {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 209, 220, 0.3);
+        }
+
+        .journey-box p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            line-height: 1.7;
+            text-align: justify;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            justify-content: center;
+        }
+
+        .skill-badge {
+            background-color: var(--white);
+            color: var(--secondary);
+            border: 1.5px solid var(--primary);
+            padding: 0.5rem 1.25rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            transition: var(--transition);
+        }
+
+        .skill-badge:hover {
+            background-color: var(--primary);
+            color: var(--dark);
+        }
+
+        .resources-box {
+            background-color: var(--white);
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(255, 209, 220, 0.3);
+        }
+
+        .resources-box h3 {
+            margin-top: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+            font-size: 1.1rem;
+        }
+
+        .resources-box h3:first-child {
+            margin-top: 0;
+        }
+
+        .resources-box ul {
+            list-style-type: none;
+            color: #6e5d60;
+            font-size: 0.9rem;
+        }
+
+        .resources-box li {
+            margin-bottom: 0.5rem;
+            position: relative;
+            padding-left: 1.25rem;
+        }
+
+        .resources-box li::before {
+            content: '🌸';
+            position: absolute;
+            left: 0;
+            top: 1px;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            background-color: #fff0f2;
+            color: var(--dark);
+            text-align: center;
+            padding: 2.5rem 2rem;
+            margin-top: 5rem;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255, 209, 220, 0.4);
+        }
+
+        footer strong {
+            color: var(--secondary);
+        }
+
+        @media (max-width: 768px) {
+            header { padding: 3rem 1.5rem; }
+            header h1 { font-size: 2rem; }
+            section { padding: 3rem 1.25rem 1rem; }
+            .nav-container a { padding: 0.75rem 1rem; font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="home">
+        <div class="header-container">
+            <h1>NUR SYAHIRA BINTI AZMAN</h1>
+            <p class="subtitle">Mobile Application Development e-Portfolio</p>
+            <div class="meta-grid">
+                <div class="meta-item">
+                    <span>Matric No</span>
+                    <p>A211215</p>
+                </div>
+                <div class="meta-item">
+                    <span>Programme</span>
+                    <p>Information Technology (IT)</p>
+                </div>
+                <div class="meta-item">
+                    <span>Instructor</span>
+                    <p>Dr. Nazatul Aini</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <nav>
+        <div class="nav-container">
+            <a href="#home">Home</a>
+            <a href="#labs">Labs</a>
+            <a href="#projects">Projects</a>
+            <a href="#reflection">Reflection</a>
+            <a href="#skills">Skills</a>
+            <a href="#resources">Resources</a>
+        </div>
+    </nav>
+
+    <section>
+        <div class="intro-box">
+            <p class="intro-text">Welcome to my native Android development portfolio showcasing my journey from building structural layouts to deploying connected cloud solutions. This site tracks my laboratory progress and the creation of my health management application.</p>
+            <div class="sdg-badge">
+                SDG 3: Good Health and Well-Being &mdash; Nutrio supports healthy lifestyles by simplifying everyday nutrition and metric tracking.
+            </div>
+        </div>
+    </section>
+
+    <section id="labs">
+        <h2 class="section-title">Laboratory Exercises</h2>
+        <div class="grid-layout">
+            
+            <div class="card">
+                <a href="https://youtu.be/S5Kld0gpy4A" class="video-link-container" target="_blank">
+                    <div class="video-placeholder">
+                        <div class="play-button"></div>
+</div>
+                </a>
+                <div class="card-content">
+                    <h3 class="card-title">Lab 1: UI Foundation</h3>
+                    <p class="card-desc">Building basic layout primitives and learning UI item alignment using Jetpack Compose.</p>
+                    <div class="card-reflection">
+                        I learned to structure standard screens using rows, columns, and modifiers. It gave me a strong foundation for arranging components visually using Kotlin.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="https://youtu.be/JV0DtOPCqBo" class="video-link-container" target="_blank">
+                    <div class="video-placeholder">
+                        <div class="play-button"></div>
+</div>
+                </a>
+                <div class="card-content">
+                    <h3 class="card-title">Lab 2: User Interaction</h3>
+                    <p class="card-desc">Implementing interactive components, forms, buttons, and state variables into layouts.</p>
+                    <div class="card-reflection">
+                        I mastered handling user inputs using state tracking tools like mutableStateOf. It helped me understand how dynamic value updates refresh layouts.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="https://youtu.be/gOUHqWPne3g" class="video-link-container" target="_blank">
+                    <div class="video-placeholder">
+                        <div class="play-button"></div>
+</div>
+                </a>
+                <div class="card-content">
+                    <h3 class="card-title">Lab 3: Material Design</h3>
+                    <p class="card-desc">Polishing screen styling, color rules, and cards according to Material tokens.</p>
+                    <div class="card-reflection">
+                        I implemented typography and custom shapes for consistent UI styling. It showed me how uniform guidelines improve application accessibility.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="https://youtu.be/DyqvKnFL71M" class="video-link-container" target="_blank">
+                    <div class="video-placeholder">
+                        <div class="play-button"></div>
+</div>
+                </a>
+                <div class="card-content">
+                    <h3 class="card-title">Lab 4: Navigation Architecture</h3>
+                    <p class="card-desc">Constructing multi-screen flows and safe routes using ViewModels to retain data states.</p>
+                    <div class="card-reflection">
+                        I built structured screen pathways and managed data operations safely inside ViewModels. This preserves vital interface properties during device rotations.
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="https://youtu.be/1Yo-_bHRpDE" class="video-link-container" target="_blank">
+                    <div class="video-placeholder">
+                        <div class="play-button"></div>
+</div>
+                </a>
+                <div class="card-content">
+                    <h3 class="card-title">Lab 5: Room Database</h3>
+                    <p class="card-desc">Integrating internal storage engines using offline entities and database access objects.</p>
+                    <div class="card-reflection">
+                        I structured persistent data setups using abstract SQLite entities and specialized DAOs. Utilizing Room kept these database operations running smoothly.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <h2 class="section-title">Core Projects</h2>
+        <div class="grid-layout">
+            
+            <div class="card">
+                <a href="https://youtu.be/OfOiTbMzF6I" class="video-link-container" target="_blank">
+                    <div class="video-placeholder">
+                        <div class="play-button"></div>
+</div>
+                </a>
+                <div class="card-content">
+                    <h3 class="card-title">Project 1: Nutrio (Local Framework)</h3>
+                    <div class="card-meta">
+                        <strong>Problem Statement:</strong> Users find it difficult to track their diet and workout logs smoothly without a reliable local interface.
+                    </div>
+                    <p class="card-desc">An offline nutrition application that combines custom forms, navigation paths, and shared ViewModels.</p>
+                    <div class="card-reflection">
+                        I unified multiple screen paths while maintaining clean data boundaries. Separating data logic from the UI design prevented performance stuttering.
+                    </div>
+                    <a href="https://github.com/a211215-sketch/A211215_DrNazatulAini_Lab4/tree/master" class="btn-github" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <a href="https://youtu.be/taDYYCRyReY" class="video-link-container" target="_blank">
+                    <div class="video-placeholder">
+                        <div class="play-button"></div>
+</div>
+                </a>
+                <div class="card-content">
+                    <h3 class="card-title">Project 2: Nutrio (Cloud Connection)</h3>
+                    <div class="card-meta">
+                        <strong>Problem Statement:</strong> Isolated databases restrict access from multiple devices and limit real-time grocery barcode lookups.
+                    </div>
+                    <p class="card-desc">An advanced system upgraded with remote database syncing, barcode API integrations, and location sensors.</p>
+                    <div class="card-reflection">
+                        I integrated live cloud synchronization by connecting Firestore with our database code. Managing live networks and sensors taught me to build strong validation logic.
+                    </div>
+                    <a href="https://github.com/a211215-sketch/A211215_DrNazatulAini_Lab5/tree/project2_firebase" class="btn-github" target="_blank">View on GitHub</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reflection">
+        <h2 class="section-title">Reflection & Learning Journey</h2>
+        <div class="journey-box">
+            <p>I started my journey by mastering the fundamentals of UI layout and user interaction in Labs 1 and 2, which I then polished using Material Design principles in Lab 3. I elevated my skills further in Labs 4 and 5 by implementing seamless screen navigation and managing local data persistence with Room database. Finally, I successfully synthesized all these core concepts into Projects 1 and 2, transforming my technical knowledge into "Nutrio," a fully functional and well-structured nutrition app.</p>
+        </div>
+    </section>
+
+    <section id="skills">
+        <h2 class="section-title">Skills & Tech Stack</h2>
+        <div class="skills-list">
+            <span class="skill-badge">Kotlin</span>
+            <span class="skill-badge">Jetpack Compose</span>
+            <span class="skill-badge">Room Database</span>
+            <span class="skill-badge">Retrofit</span>
+            <span class="skill-badge">Firebase Firestore</span>
+            <span class="skill-badge">ViewModel Architecture</span>
+            <span class="skill-badge">Compose Navigation</span>
+        </div>
+    </section>
+
+    <section id="resources">
+        <h2 class="section-title">Resources & References</h2>
+        <div class="resources-box">
+            <h3>Libraries & Packages Used</h3>
+            <ul>
+                <li><strong>Firebase Firestore SDK:</strong> Synchronizes user data rows dynamically to cloud storage slots.</li>
+                <li><strong>Room Native Library:</strong> Builds stable offline tables on the hardware storage partitions.</li>
+                <li><strong>Compose Navigation Core:</strong> Coordinates transitions across the internal routing nodes.</li>
+            </ul>
+            <h3>AI Tool Acknowledgement</h3>
+            <ul>
+                <li><strong>Generative Framework Support:</strong> LLM agents were used to clean up redundant layout styles, simplify code reflections, organize git deployment workflows, and structure the theme setup of this presentation file.</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 <strong>NUR SYAHIRA BINTI AZMAN</strong> (A211215)</p>
+        <p>Programme: Information Technology (IT) | Instructor: Dr. Nazatul Aini</p>
+    </footer>
+
+</body>
+</html>
