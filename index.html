@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NUR SYAHIRA BINTI AZMAN - Student e-Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600;700&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #ffd1dc; /* Soft pastel pink */
-            --primary-dark: #ffafc1;
-            --primary-light: #fff5f7;
-            --secondary: #e07a93; /* Subtle rose */
-            --dark: #4a3b3e;
-            --light: #fffbfc;
+            --primary: #F5EBE0; /* Cream Lembut */
+            --primary-dark: #E3D5CA; /* Cream Gelap sedikit */
+            --primary-light: #FDFBF7; /* Milk Cream Cerah */
+            --secondary: #7A1E31; /* Maroon Elegan */
+            --secondary-dark: #5C1221; /* Maroon Gelap */
+            --secondary-light: #F9EBEC; /* Maroon Sangat Lembut */
+            --dark: #3B0D16; /* Deep Maroon untuk Text */
+            --light: #FAF5EF; 
             --white: #ffffff;
-            --shadow: 0 8px 24px rgba(224, 122, 147, 0.06);
-            --transition: all 0.3s ease;
+            --shadow: 0 10px 30px rgba(122, 30, 49, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         * {
@@ -28,73 +32,199 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: 'Quicksand', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             line-height: 1.5;
             color: var(--dark);
             background-color: var(--light);
+            position: relative;
+            overflow-x: hidden;
         }
 
+        .floating-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .food-icon {
+            position: absolute;
+            font-size: 2rem;
+            opacity: 0.15;
+            animation: floatY 6s ease-in-out infinite;
+            filter: drop-shadow(0 4px 6px rgba(122, 30, 49, 0.1));
+        }
+
+        @keyframes floatY {
+            0%, 100% {
+                transform: translateY(0) rotate(0deg) scale(1);
+            }
+            50% {
+                transform: translateY(-20px) rotate(15deg) scale(1.1);
+            }
+        }
+
+        /* Posisi ikon makanan comel di latar belakang */
+        .fi-1 { top: 5%; left: 8%; animation-delay: 0s; }
+        .fi-2 { top: 15%; right: 10%; animation-delay: 1.5s; font-size: 2.5rem; }
+        .fi-3 { top: 28%; left: 5%; animation-delay: 3s; }
+        .fi-4 { top: 42%; right: 7%; animation-delay: 0.5s; }
+        .fi-5 { top: 58%; left: 9%; animation-delay: 2s; font-size: 2.4rem; }
+        .fi-6 { top: 72%; right: 11%; animation-delay: 3.5s; }
+        .fi-7 { top: 85%; left: 6%; animation-delay: 1s; }
+        .fi-8 { top: 94%; right: 8%; animation-delay: 2.5s; }
+
         header {
-            background: linear-gradient(135deg, #fff0f2 0%, #ffd1dc 100%);
+            background: linear-gradient(135deg, #FDF8F4 0%, #F5EBE0 100%);
             color: var(--dark);
-            padding: 4rem 2rem;
-            text-align: center;
-            border-bottom: 1px solid rgba(255, 175, 193, 0.2);
+            padding: 5rem 2rem 4rem;
+            text-align: left;
+            border-bottom: 2px solid var(--primary-dark);
+            position: relative;
+            z-index: 10;
         }
 
         .header-container {
-            max-width: 800px;
+            max-width: 950px;
             margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .header-info {
+            flex: 1;
+            min-width: 300px;
         }
 
         header h1 {
-            font-size: 2.5rem;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.8rem;
             font-weight: 700;
             color: var(--secondary);
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
+            line-height: 1.2;
+            text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.8);
         }
 
         .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.8;
+            font-size: 1.2rem;
+            color: var(--dark);
+            opacity: 0.9;
             margin-bottom: 2rem;
-            font-weight: 500;
+            font-weight: 600;
+            border-left: 4px solid var(--secondary);
+            padding-left: 0.75rem;
         }
 
+        /* Rekabentuk Frame Polaroid Comel untuk Gambar Profil */
+        .profile-section {
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-frame-outer {
+            position: relative;
+            width: 190px;
+            height: 190px;
+            background-color: var(--white);
+            border: 6px solid var(--secondary);
+            border-radius: 30px;
+            padding: 8px;
+            box-shadow: 0 12px 28px rgba(122, 30, 49, 0.15);
+            transform: rotate(-3deg);
+            transition: var(--transition);
+        }
+
+        .profile-frame-outer::before {
+            content: '✨';
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            font-size: 1.5rem;
+        }
+
+        .profile-frame-outer::after {
+            content: '🌸';
+            position: absolute;
+            bottom: -15px;
+            left: -15px;
+            font-size: 1.5rem;
+        }
+
+        .profile-frame-outer:hover {
+            transform: rotate(2deg) scale(1.05);
+            box-shadow: 0 16px 35px rgba(122, 30, 49, 0.2);
+        }
+
+        .profile-frame-inner {
+            width: 100%;
+            height: 100%;
+            border-radius: 20px;
+            overflow: hidden;
+            background-color: var(--primary-light);
+            border: 2px dashed var(--primary-dark);
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Kad Maklumat Matrik di Sebelah Gambar Profil */
         .meta-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 1.25rem;
-            border-radius: 16px;
+            background: rgba(255, 255, 255, 0.85);
+            padding: 1.5rem;
+            border-radius: 24px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 2px solid var(--primary);
+            backdrop-filter: blur(10px);
         }
 
         .meta-item span {
             display: block;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             text-transform: uppercase;
             color: var(--secondary);
             font-weight: 700;
-            margin-bottom: 0.15rem;
+            margin-bottom: 0.25rem;
+            letter-spacing: 0.5px;
         }
 
         .meta-item p {
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 700;
+            color: var(--dark);
         }
 
+        /* Navigation Bar */
         nav {
             position: sticky;
             top: 0;
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(253, 248, 244, 0.95);
             backdrop-filter: blur(12px);
-            box-shadow: 0 2px 15px rgba(224, 122, 147, 0.04);
+            box-shadow: 0 4px 20px rgba(122, 30, 49, 0.05);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 209, 220, 0.4);
+            border-bottom: 2px solid var(--primary-dark);
         }
 
         .nav-container {
@@ -108,98 +238,131 @@
         .nav-container a {
             color: var(--dark);
             text-decoration: none;
-            padding: 0.9rem 1.2rem;
-            font-weight: 600;
-            font-size: 0.9rem;
+            padding: 1.1rem 1.4rem;
+            font-weight: 700;
+            font-size: 0.95rem;
             transition: var(--transition);
+            position: relative;
         }
 
         .nav-container a:hover {
             color: var(--secondary);
-            background-color: var(--primary-light);
+        }
+
+        .nav-container a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background-color: var(--secondary);
+            transition: var(--transition);
+            transform: translateX(-50%);
+            border-radius: 10px 10px 0 0;
+        }
+
+        .nav-container a:hover::after {
+            width: 60%;
         }
 
         section {
             max-width: 1000px;
             margin: 0 auto;
-            padding: 4rem 1.5rem 1rem;
+            padding: 5rem 1.5rem 1rem;
+            position: relative;
+            z-index: 10;
         }
 
         .section-title {
-            font-size: 1.8rem;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 2.1rem;
             color: var(--secondary);
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
             text-align: center;
             font-weight: 700;
+            text-shadow: 1px 1px 0px rgba(255, 255, 255, 0.9);
         }
 
         .section-title::after {
-            content: '';
+            content: '🌸';
             display: block;
-            width: 40px;
-            height: 3px;
-            background-color: var(--primary-dark);
-            margin: 0.5rem auto 0;
-            border-radius: 4px;
+            font-size: 1rem;
+            margin-top: 0.5rem;
+            text-align: center;
         }
 
         .intro-box {
             background-color: var(--white);
-            padding: 2rem;
-            border-radius: 20px;
+            padding: 2.5rem;
+            border-radius: 28px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 209, 220, 0.3);
+            border: 2px solid var(--primary);
             text-align: center;
+            position: relative;
+        }
+
+        .intro-box::before {
+            content: '🌸';
+            position: absolute;
+            top: -15px;
+            left: 30px;
+            font-size: 1.5rem;
         }
 
         .intro-text {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--dark);
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.8rem;
+            font-weight: 600;
+            line-height: 1.7;
         }
 
         .sdg-badge {
             display: inline-block;
-            background-color: #4caf50;
+            background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
             color: var(--white);
-            padding: 0.6rem 1.2rem;
+            padding: 0.75rem 1.5rem;
             border-radius: 50px;
             font-weight: 700;
             font-size: 0.9rem;
-            box-shadow: 0 4px 10px rgba(76,175,80,0.15);
+            box-shadow: 0 6px 15px rgba(76,175,80,0.25);
+            max-width: 100%;
         }
 
         .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2.5rem;
         }
 
+        /* Rekabentuk Kad Latihan Makmal & Projek */
         .card {
             background-color: var(--white);
-            border-radius: 20px;
+            border-radius: 28px;
             overflow: hidden;
             box-shadow: var(--shadow);
             transition: var(--transition);
             display: flex;
             flex-direction: column;
-            border: 1px solid rgba(255, 209, 220, 0.2);
+            border: 2px solid var(--primary);
         }
 
         .card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px rgba(224, 122, 147, 0.1);
+            transform: translateY(-8px);
+            box-shadow: 0 16px 40px rgba(122, 30, 49, 0.12);
+            border-color: var(--primary-dark);
         }
 
-        /* Rekabentuk Thumbnail Video Gantikan Iframe */
         .video-link-container {
             position: relative;
             display: block;
             width: 100%;
             padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-            background-color: #f0e2e5;
+            background-color: var(--primary-light);
             overflow: hidden;
             text-decoration: none;
+            border-bottom: 2px solid var(--primary);
         }
 
         .video-placeholder {
@@ -212,24 +375,23 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: linear-gradient(rgba(224, 122, 147, 0.1), rgba(224, 122, 147, 0.2));
+            background: linear-gradient(rgba(122, 30, 49, 0.05), rgba(122, 30, 49, 0.1));
             transition: var(--transition);
         }
 
         .video-link-container:hover .video-placeholder {
-            background: linear-gradient(rgba(224, 122, 147, 0.2), rgba(224, 122, 147, 0.3));
+            background: linear-gradient(rgba(122, 30, 49, 0.1), rgba(122, 30, 49, 0.15));
         }
 
         .play-button {
-            width: 55px;
-            height: 55px;
+            width: 60px;
+            height: 60px;
             background-color: #ff0000;
-            border-radius: 50px;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3);
-            margin-bottom: 0.5rem;
+            box-shadow: 0 6px 20px rgba(255, 0, 0, 0.35);
             transition: var(--transition);
         }
 
@@ -239,69 +401,68 @@
             width: 0;
             height: 0;
             border-style: solid;
-            border-width: 9px 0 9px 16px;
+            border-width: 10px 0 10px 18px;
             border-color: transparent transparent transparent #ffffff;
-            margin-left: 4px;
+            margin-left: 5px;
         }
 
         .video-link-container:hover .play-button {
-            transform: scale(1.1);
+            transform: scale(1.15);
             background-color: #cc0000;
-        }
-
-        .play-text {
-            color: var(--dark);
-            font-size: 0.85rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 0.2rem 0.6rem;
-            border-radius: 6px;
+            box-shadow: 0 8px 25px rgba(204, 0, 0, 0.45);
         }
 
         .card-content {
-            padding: 1.5rem;
+            padding: 2rem;
             display: flex;
             flex-direction: column;
             flex-grow: 1;
         }
 
         .card-title {
-            font-size: 1.25rem;
-            color: var(--dark);
-            margin-bottom: 0.5rem;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.4rem;
+            color: var(--secondary);
+            margin-bottom: 0.75rem;
             font-weight: 700;
         }
 
         .card-desc {
-            font-size: 0.9rem;
-            color: #6e5d60;
-            margin-bottom: 1rem;
+            font-size: 0.95rem;
+            color: var(--dark);
+            opacity: 0.85;
+            margin-bottom: 1.5rem;
             flex-grow: 1;
         }
 
         .card-reflection {
             background-color: var(--primary-light);
-            padding: 1rem;
-            border-left: 3px solid var(--primary-dark);
-            border-radius: 4px;
-            font-size: 0.9rem;
+            padding: 1.2rem;
+            border-left: 4px solid var(--secondary);
+            border-radius: 8px;
+            font-size: 0.92rem;
             color: var(--dark);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border-top: 1px solid var(--primary);
+            border-right: 1px solid var(--primary);
+            border-bottom: 1px solid var(--primary);
+            line-height: 1.6;
         }
 
         .card-meta {
-            margin-bottom: 1rem;
-            font-size: 0.85rem;
-            color: #6e5d60;
-            background: var(--light);
-            padding: 0.75rem;
-            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            color: var(--dark);
+            background: var(--primary-light);
+            padding: 1rem;
+            border-radius: 16px;
+            border: 1.5px dashed var(--primary-dark);
         }
 
         .card-meta strong {
             color: var(--secondary);
+            display: block;
+            margin-bottom: 0.25rem;
         }
 
         .btn-github {
@@ -311,71 +472,81 @@
             background-color: var(--secondary);
             color: var(--white);
             text-decoration: none;
-            padding: 0.75rem 1.25rem;
-            border-radius: 12px;
+            padding: 0.9rem 1.5rem;
+            border-radius: 16px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             transition: var(--transition);
             margin-top: auto;
             text-align: center;
+            box-shadow: 0 6px 18px rgba(122, 30, 49, 0.15);
         }
 
         .btn-github:hover {
-            background-color: #d1647e;
-            transform: translateY(-1px);
+            background-color: var(--secondary-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 22px rgba(122, 30, 49, 0.25);
         }
 
+        /* Journey Box */
         .journey-box {
             background-color: var(--white);
-            padding: 2rem;
-            border-radius: 20px;
+            padding: 2.5rem;
+            border-radius: 28px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 209, 220, 0.3);
+            border: 2px solid var(--primary);
+            position: relative;
         }
 
         .journey-box p {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             color: var(--dark);
-            line-height: 1.7;
+            line-height: 1.8;
             text-align: justify;
         }
 
+        /* Skills Badges */
         .skills-list {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.75rem;
+            gap: 1rem;
             justify-content: center;
         }
 
         .skill-badge {
             background-color: var(--white);
             color: var(--secondary);
-            border: 1.5px solid var(--primary);
-            padding: 0.5rem 1.25rem;
+            border: 2px solid var(--primary-dark);
+            padding: 0.7rem 1.6rem;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 0.85rem;
+            font-weight: 700;
+            font-size: 0.95rem;
             transition: var(--transition);
+            box-shadow: 0 4px 10px rgba(122, 30, 49, 0.03);
         }
 
         .skill-badge:hover {
-            background-color: var(--primary);
-            color: var(--dark);
+            background-color: var(--secondary);
+            color: var(--white);
+            border-color: var(--secondary);
+            transform: scale(1.08) rotate(2deg);
         }
 
+        /* Resources Box */
         .resources-box {
             background-color: var(--white);
-            padding: 2rem;
-            border-radius: 20px;
+            padding: 2.5rem;
+            border-radius: 28px;
             box-shadow: var(--shadow);
-            border: 1px solid rgba(255, 209, 220, 0.3);
+            border: 2px solid var(--primary);
         }
 
         .resources-box h3 {
-            margin-top: 1.5rem;
-            margin-bottom: 0.5rem;
+            margin-top: 2rem;
+            margin-bottom: 0.75rem;
             color: var(--secondary);
-            font-size: 1.1rem;
+            font-family: 'Fredoka', sans-serif;
+            font-size: 1.3rem;
         }
 
         .resources-box h3:first-child {
@@ -384,64 +555,105 @@
 
         .resources-box ul {
             list-style-type: none;
-            color: #6e5d60;
-            font-size: 0.9rem;
+            color: var(--dark);
+            font-size: 0.95rem;
         }
 
         .resources-box li {
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.75rem;
             position: relative;
-            padding-left: 1.25rem;
+            padding-left: 1.75rem;
         }
 
         .resources-box li::before {
             content: '🌸';
             position: absolute;
             left: 0;
-            top: 1px;
-            font-size: 0.8rem;
+            top: 2px;
+            font-size: 0.9rem;
         }
 
+        /* Footer */
         footer {
-            background-color: #fff0f2;
+            background-color: var(--primary);
             color: var(--dark);
             text-align: center;
-            padding: 2.5rem 2rem;
-            margin-top: 5rem;
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255, 209, 220, 0.4);
+            padding: 3rem 2rem;
+            margin-top: 6rem;
+            font-size: 0.95rem;
+            border-top: 2px solid var(--primary-dark);
+            position: relative;
+            z-index: 10;
         }
 
         footer strong {
             color: var(--secondary);
         }
 
+        /* Responsive */
         @media (max-width: 768px) {
-            header { padding: 3rem 1.5rem; }
-            header h1 { font-size: 2rem; }
-            section { padding: 3rem 1.25rem 1rem; }
-            .nav-container a { padding: 0.75rem 1rem; font-size: 0.85rem; }
+            header { 
+                padding: 4rem 1.5rem 3rem; 
+                text-align: center;
+            }
+            .header-container {
+                flex-direction: column;
+                justify-content: center;
+                gap: 2rem;
+            }
+            header h1 { font-size: 2.2rem; }
+            section { padding: 3.5rem 1.25rem 1rem; }
+            .nav-container a { padding: 0.8rem 1rem; font-size: 0.85rem; }
+            .floating-bg { display: none; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Floating Background Food Icons -->
+    <div class="floating-bg">
+        <div class="food-icon fi-1">🍕</div>
+        <div class="food-icon fi-2">🍎</div>
+        <div class="food-icon fi-3">🧁</div>
+        <div class="food-icon fi-4">🍩</div>
+        <div class="food-icon fi-5">🍰</div>
+        <div class="food-icon fi-6">🍕</div>
+        <div class="food-icon fi-7">🍎</div>
+        <div class="food-icon fi-8">🧁</div>
+    </div>
+
     <header id="home">
         <div class="header-container">
-            <h1>NUR SYAHIRA BINTI AZMAN</h1>
-            <p class="subtitle">Mobile Application Development e-Portfolio</p>
-            <div class="meta-grid">
-                <div class="meta-item">
-                    <span>Matric No</span>
-                    <p>A211215</p>
+            <!-- Bahagian Teks Info (Maroon Text on Cream background) -->
+            <div class="header-info">
+                <h1>NUR SYAHIRA BINTI AZMAN</h1>
+                <p class="subtitle">Mobile Application Development e-Portfolio</p>
+                <div class="meta-grid">
+                    <div class="meta-item">
+                        <span>Matric No</span>
+                        <p>A211215</p>
+                    </div>
+                    <div class="meta-item">
+                        <span>Programme</span>
+                        <p>Information Technology (IT)</p>
+                    </div>
+                    <div class="meta-item">
+                        <span>Instructor</span>
+                        <p>Dr. Nazatul Aini</p>
+                    </div>
                 </div>
-                <div class="meta-item">
-                    <span>Programme</span>
-                    <p>Information Technology (IT)</p>
-                </div>
-                <div class="meta-item">
-                    <span>Instructor</span>
-                    <p>Dr. Nazatul Aini</p>
+            </div>
+
+            <!-- Bahagian Gambar Profil Comel (Polaroid Frame) -->
+            <div class="profile-section">
+                <div class="profile-frame-outer">
+                    <div class="profile-frame-inner">
+                        <!-- Pautan imej profil anda di GitHub diubah kepada format .jpeg -->
+                        <img id="profile-pic" class="profile-img" 
+                             src="https://raw.githubusercontent.com/a211215-sketch/A211215_DrNazatulAini_Lab4/master/profile.jpeg" 
+                             alt="Sya Profile" 
+                             onerror="this.src='https://placehold.co/180x180/7A1E31/ffffff?text=Syahira'">
+                    </div>
                 </div>
             </div>
         </div>
@@ -462,7 +674,7 @@
         <div class="intro-box">
             <p class="intro-text">Welcome to my native Android development portfolio showcasing my journey from building structural layouts to deploying connected cloud solutions. This site tracks my laboratory progress and the creation of my health management application.</p>
             <div class="sdg-badge">
-                SDG 3: Good Health and Well-Being &mdash; Nutrio supports healthy lifestyles by simplifying everyday nutrition and metric tracking.
+                🥦 SDG 3: Good Health and Well-Being &mdash; Nutrio supports healthy lifestyles by simplifying everyday nutrition and metric tracking.
             </div>
         </div>
     </section>
@@ -475,7 +687,7 @@
                 <a href="https://youtu.be/S5Kld0gpy4A" class="video-link-container" target="_blank">
                     <div class="video-placeholder">
                         <div class="play-button"></div>
-</div>
+                    </div>
                 </a>
                 <div class="card-content">
                     <h3 class="card-title">Lab 1: UI Foundation</h3>
@@ -490,7 +702,7 @@
                 <a href="https://youtu.be/JV0DtOPCqBo" class="video-link-container" target="_blank">
                     <div class="video-placeholder">
                         <div class="play-button"></div>
-</div>
+                    </div>
                 </a>
                 <div class="card-content">
                     <h3 class="card-title">Lab 2: User Interaction</h3>
@@ -505,7 +717,7 @@
                 <a href="https://youtu.be/gOUHqWPne3g" class="video-link-container" target="_blank">
                     <div class="video-placeholder">
                         <div class="play-button"></div>
-</div>
+                    </div>
                 </a>
                 <div class="card-content">
                     <h3 class="card-title">Lab 3: Material Design</h3>
@@ -520,7 +732,7 @@
                 <a href="https://youtu.be/DyqvKnFL71M" class="video-link-container" target="_blank">
                     <div class="video-placeholder">
                         <div class="play-button"></div>
-</div>
+                    </div>
                 </a>
                 <div class="card-content">
                     <h3 class="card-title">Lab 4: Navigation Architecture</h3>
@@ -535,7 +747,7 @@
                 <a href="https://youtu.be/1Yo-_bHRpDE" class="video-link-container" target="_blank">
                     <div class="video-placeholder">
                         <div class="play-button"></div>
-</div>
+                    </div>
                 </a>
                 <div class="card-content">
                     <h3 class="card-title">Lab 5: Room Database</h3>
@@ -556,7 +768,7 @@
                 <a href="https://youtu.be/OfOiTbMzF6I" class="video-link-container" target="_blank">
                     <div class="video-placeholder">
                         <div class="play-button"></div>
-</div>
+                    </div>
                 </a>
                 <div class="card-content">
                     <h3 class="card-title">Project 1: Nutrio (Local Framework)</h3>
@@ -565,7 +777,7 @@
                     </div>
                     <p class="card-desc">An offline nutrition application that combines custom forms, navigation paths, and shared ViewModels.</p>
                     <div class="card-reflection">
-                        I unified multiple screen paths while maintaining clean data boundaries. Separating data logic from the UI design prevented performance stuttering.
+                        I unified multiple screen pathways while maintaining clean data boundaries. Separating data logic from the UI design prevented performance stuttering.
                     </div>
                     <a href="https://github.com/a211215-sketch/A211215_DrNazatulAini_Lab4/tree/master" class="btn-github" target="_blank">View on GitHub</a>
                 </div>
@@ -575,7 +787,7 @@
                 <a href="https://youtu.be/taDYYCRyReY" class="video-link-container" target="_blank">
                     <div class="video-placeholder">
                         <div class="play-button"></div>
-</div>
+                    </div>
                 </a>
                 <div class="card-content">
                     <h3 class="card-title">Project 2: Nutrio (Cloud Connection)</h3>
