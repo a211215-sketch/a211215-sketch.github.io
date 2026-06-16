@@ -15,7 +15,7 @@
             --secondary-dark: #5C1221; /* Maroon Gelap */
             --secondary-light: #F9EBEC; /* Maroon Sangat Lembut */
             --dark: #3B0D16; /* Deep Maroon untuk Text */
-            --light: #FAF5EF; 
+            --light: #FAF5EF; /* Latar Belakang Hangat Warm Cream */
             --white: #ffffff;
             --shadow: 0 10px 30px rgba(122, 30, 49, 0.08);
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -336,7 +336,6 @@
             gap: 2.5rem;
         }
 
-        /* Rekabentuk Kad Latihan Makmal & Projek */
         .card {
             background-color: var(--white);
             border-radius: 28px;
@@ -488,7 +487,6 @@
             box-shadow: 0 8px 22px rgba(122, 30, 49, 0.25);
         }
 
-        /* Journey Box */
         .journey-box {
             background-color: var(--white);
             padding: 2.5rem;
@@ -505,7 +503,6 @@
             text-align: justify;
         }
 
-        /* Skills Badges */
         .skills-list {
             display: flex;
             flex-wrap: wrap;
@@ -532,7 +529,6 @@
             transform: scale(1.08) rotate(2deg);
         }
 
-        /* Resources Box */
         .resources-box {
             background-color: var(--white);
             padding: 2.5rem;
@@ -648,11 +644,11 @@
             <div class="profile-section">
                 <div class="profile-frame-outer">
                     <div class="profile-frame-inner">
-                        <!-- Pautan imej profil anda di GitHub diubah kepada format .jpeg -->
+                        <!-- URL asal menggunakan branch 'master'. Jika gagal dimuatkan, fungsi 'tryAlternativeBranch' akan cuba 'main' secara automatik! -->
                         <img id="profile-pic" class="profile-img" 
                              src="https://raw.githubusercontent.com/a211215-sketch/A211215_DrNazatulAini_Lab4/master/profile.jpeg" 
                              alt="Sya Profile" 
-                             onerror="this.src='https://placehold.co/180x180/7A1E31/ffffff?text=Syahira'">
+                             onerror="tryAlternativeBranch(this)">
                     </div>
                 </div>
             </div>
@@ -845,5 +841,17 @@
         <p>Programme: Information Technology (IT) | Instructor: Dr. Nazatul Aini</p>
     </footer>
 
+    <script>
+        // Fungsi pintar untuk mengesan dan menukar branch secara automatik (master -> main)
+        function tryAlternativeBranch(img) {
+            if (img.src.includes('/master/')) {
+                console.log("Mencuba alternatif: menukar dari branch 'master' kepada 'main'...");
+                img.src = img.src.replace('/master/', '/main/');
+            } else {
+                console.log("Kedua-dua branch gagal ditemui. Memaparkan placeholder...");
+                img.src = 'https://placehold.co/180x180/7A1E31/ffffff?text=Syahira';
+            }
+        }
+    </script>
 </body>
 </html>
